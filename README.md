@@ -24,9 +24,12 @@ sudo apt-get install Jenkins
 6.If you want to verify whether Jenkins installed or not 
  1.ps -ef | grep Jenkins
 Its shows which port Jenkins are running its 8080
+
 7.Finally, we check in port the Jenkins are running or not 
   By default, any cloud provider port rules are blocked, we need to enable this
+  
 8.Go to VM -networksettings-create port rule- inbound port rule -add 8080 port
+
 9.verify the ports whether the Jenkins is running or not with the public ip address
     http://20.84.68.29:8080
 its shows sign in jenkins
