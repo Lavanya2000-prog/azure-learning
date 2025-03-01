@@ -1,0 +1,20 @@
+Create Networking, Vnet, Firewall and Bastion
+1.Azure portal-create resource
+2.Create Virtual network – give mandatory details- review and create (firewall,Bastion,Vnet)
+3.Create virtual machine – give mandatory details – Review and Create 
+4.connect to Bastion – Goto VM – connect-bastion 
+ Give mandatory details – give ssh and local file 
+5.give code sudo su –
+                     apt update
+                     apt install nginx
+                     cd /var/www/htm- ls
+                    vim index.html – Vi mode – I insert mode
+                    <h1> I learnt Azure networking Today </h1>       -code -esc - :wq – systemctl restart nginx 
+Curl localhost:80 –  the o/p shouls be what  we wrote in html file
+6.create DNAT rule – go to – firewall -azure firewall policy -DNAT – add collection rule – give mandatory  details
+7. add collections rule – give mandatory details like source id (i.e search browser for IP) – destination id (i.e firewall public ip address) transaction id (i.e Virtual machine private id).
+8.Go to browser – firewall public ip : Port 
+ The output should be what we wrote in html file and is similar to code output.
+ 
+                 
+                    
