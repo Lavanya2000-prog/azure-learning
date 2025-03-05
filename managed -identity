@@ -1,0 +1,10 @@
+	MANAGED IDENTITY CONCEPTS
+1.Goto azure console-create resource group
+2.create storage account-create container-upload file (.txt)
+3.create virtual machine
+4. In VM-identity-enable and save
+5.Go to storage account-access control(IAM)- Add role assignment-role is owner,managed identity select VM and review and create
+6.Go to Gitbash- ssh azureuser@publicip address of VM
+7. access_token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fstorage.azure.com%2F' -H Metadata:true | jq -r '.access_token')
+8. curl "https://$storage_account_name.blob.core.windows.net/$container_name/$blob_name" -H "x-ms-version: 2017-11-09" -H "Authorization: Bearer $access_token"
+9.Now we can access the txt file content.
