@@ -1,0 +1,32 @@
+trigger:
+- main  # Runs the pipeline on changes to the main branch
+
+pool:
+  vmImage: 'ubuntu-latest'  # Runs on latest Ubuntu agent
+
+steps:
+- checkout: self  # Checkout code
+
+- task: Docker@2
+  displayName: 'Login to ACR'
+  inputs:
+    command: 'login'
+    containerRegistry: '0b4b3285-bea1-4296-a9d1-97df06130f2f'  # Service connection to ACR
+
+- task: Docker@2
+  displayName: 'Build Docker Image'
+  inputs:
+    command: 'build'
+    dockerfile: '$(Build.SourcesDirectory)/Dockerfile'  # Update if in a subfolder
+    repository: 'lavanyaazurecicd.azurecr.io/your-image-name'
+    tags: 'latest'
+
+- task: Docker@2
+  displayName: 'Push Docker Image to ACR'
+  inputs:
+    command: 'push'
+    repository: 'lavanyazurecicd.azurecr.io/your-image-name'
+    tags: 'latest'
+
+- script: echo "Docker image successfully built and pushed!"
+  displayName: 'Success Message'
